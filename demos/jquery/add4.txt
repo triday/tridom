@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+  <p>Hello</p><span id="a">Hello Again</span>
+<script>$("p").add(document.getElementById("a")).css("background", "yellow");</script>
+ 
+</body>
+</html>

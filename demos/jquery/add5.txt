@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+  <p>Hello</p><span id="a">Hello Again</span>
+<script>var collection = $("p");
+// capture the new collection
+collection = collection.add(document.getElementById("a"));
+collection.css("background", "yellow");</script>
+ 
+</body>
+</html>

@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+  <p>Hello</p>
+<script>$("p").clone().add("<span>Again</span>").appendTo(document.body);</script>
+ 
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="./style.css" rel="stylesheet">
+    <link href="../node_modules/highlightjs/styles/github.css" rel="stylesheet">
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/highlightjs/highlight.pack.min.js"></script>
+    <script src="../node_modules/highlightjs-line-numbers.js/dist/highlightjs-line-numbers.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+        hljs.initLineNumbersOnLoad();
+    </script>
+    <script>
+        function tranformCode(jqueryCode) {
+            return jqueryCode.replace('src="https://code.jquery.com/jquery-latest.js"',
+                'src="../dist/tridom.js"');
+        }
+        $(function () {
+            var file = location.hash.length > 1 ? location.hash.substr(1) : 'add1';
+            var codePath = 'jquery/' + file + '.txt';
+            $.get(codePath).then(function (jqueryCode) {
+                $('.jquery code').text(jqueryCode);
+                $('.jquery .result').attr('srcdoc', jqueryCode);
+                var tridomCode = tranformCode(jqueryCode);
+                $('.tridom code').text(tridomCode);
+                $('.tridom .result').attr('srcdoc', tridomCode);
+
+                $('pre code').each(function (index, element) {
+                    hljs.highlightBlock(element);
+                    hljs.lineNumbersBlock(element);
+                });
+            });
+        })
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jquery">
+            <h4>jquery代码</h4>
+            <pre><code class="javascript"></code></pre>
+            <h4>运行结果</h4>
+            <iframe class="result" frameborder="no" border="0"></iframe>
+        </div>
+        <div class="tridom">
+            <h4>tridom代码</h4>
+            <pre><code class="javascript"></code></pre>
+            <h4>运行结果</h4>
+            <iframe class="result" frameborder="no" border="0"></iframe>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
